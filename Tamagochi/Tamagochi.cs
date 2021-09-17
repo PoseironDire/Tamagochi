@@ -18,8 +18,10 @@ public class Tamagochi
     // Increase Hunger & Boredom by 1 each Tick, & If Any them reach over 10 isALive = false
     public void Tick()
     {
-        hunger++;
-        boredom++;
+        int h = generator.Next(4);
+        int b = generator.Next(4);
+        hunger += h;
+        boredom += b;
 
         if (hunger > 10 || boredom > 10)
         {
