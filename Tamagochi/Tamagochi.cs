@@ -8,7 +8,7 @@ public class Tamagochi
     //Tamagochi's Hunger Meter
     public int boredom = 0;
     //Tamagochi's Name 
-    public string name;
+    public string name = "";
     //Tamagochi's Words
     public List<string> words = new List<string>();
     public Random generator = new Random();
@@ -66,7 +66,7 @@ public class Tamagochi
     public void PrintStats()
     {
         Console.ForegroundColor = ConsoleColor.Blue;
-        Console.WriteLine(name + " Status:");
+        Console.WriteLine(name + "'s Status:");
         if (hunger >= 10)
         {
             Console.ForegroundColor = ConsoleColor.DarkRed;

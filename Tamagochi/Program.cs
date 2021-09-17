@@ -11,12 +11,10 @@ public class Program
         Console.ReadLine();
         Console.Clear();
         bool playing = true;
-
         while (playing)
         {
             for (int i = players.Count - 1; i >= 0; i--)
             {
-                System.Console.WriteLine(players.Count);
                 if (players[i].GetAlive())
                 {
                     players[i].PrintStats();
@@ -24,11 +22,11 @@ public class Program
                     Console.ReadLine();
 
                     Console.WriteLine("What do you want to do with " + players[i].name + "?:");
-                    Console.WriteLine("1. Teach it");
-                    Console.WriteLine("2. Greet it");
-                    Console.WriteLine("3. Feed it");
-                    Console.WriteLine("4. Breed Tamagochi");
-                    Console.WriteLine("5. Nothing");
+                    Console.WriteLine("1. Teach " + players[i].name + "...");
+                    Console.WriteLine("2. Greet " + players[i].name + "...");
+                    Console.WriteLine("3. Feed " + players[i].name + "...");
+                    Console.WriteLine("4. Breed New Tamagochi");
+                    Console.WriteLine("5. Do Nothing.");
 
                     string Choice = Console.ReadLine().ToLower();
                     if (Choice == "1" || Choice == "teach it" || Choice == "teach")
@@ -67,6 +65,7 @@ public class Program
                     if (retry == "yes")
                     {
                         players = CreateNew(players);
+                        Console.Clear();
                     }
                     else
                     {
@@ -90,8 +89,19 @@ public class Program
     static List<Tamagochi> CreateNew(List<Tamagochi> tamagochis)
     {
         Tamagochi tamagochi = new Tamagochi();
-        Console.WriteLine("What Is YOUR Tamagochi Called?");
+        if (tamagochis.Count > 0)
+        {
+            Console.WriteLine("What should your new Tamagochi be called?");
+        }
+        else
+        {
+            Console.WriteLine("What should your Tamagochi be called?");
+        }
         tamagochi.name = Console.ReadLine();
+        if (tamagochi.name == "")
+        {
+            tamagochi.name = "None";
+        }
         Console.WriteLine("Your Tamagochi's name is: " + tamagochi.name);
         tamagochis.Add(tamagochi);
         return tamagochis;
