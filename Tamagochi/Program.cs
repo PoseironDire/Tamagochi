@@ -100,7 +100,7 @@ public class Program
         tamagochi.name = Console.ReadLine();
         if (tamagochi.name == "")
         {
-            tamagochi.name = "None";
+            tamagochi.name = "Markus Piotrowski";
         }
         Console.WriteLine("Your Tamagochi's name is: " + tamagochi.name);
         tamagochis.Add(tamagochi);

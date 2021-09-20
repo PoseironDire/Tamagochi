@@ -5,7 +5,7 @@ public class Tamagochi
 {
     //Tamagochi's Hunger Meter
     public int hunger = 0;
-    //Tamagochi's Hunger Meter
+    //Tamagochi's Boredom Meter
     public int boredom = 0;
     //Tamagochi's Name 
     public string name = "";
@@ -18,10 +18,8 @@ public class Tamagochi
     // Increase Hunger & Boredom by 1 each Tick, & If Any them reach over 10 isALive = false
     public void Tick()
     {
-        int h = generator.Next(4);
-        int b = generator.Next(4);
-        hunger += h;
-        boredom += b;
+        hunger += generator.Next(1, 2);
+        boredom += generator.Next(1, 2);
 
         if (hunger > 10 || boredom > 10)
         {
@@ -32,14 +30,16 @@ public class Tamagochi
     //Decreases Hunger By 1
     public void Feed()
     {
-        hunger--;
+        hunger -= generator.Next(3, 5);
+        hunger = Math.Max(hunger, -1);
         Console.WriteLine(name + " was fed!");
     }
 
     //Decreases boredom by 1.
     public void ReduceBoredom()
     {
-        boredom -= 1;
+        boredom -= generator.Next(3, 5);
+        boredom = Math.Max(boredom, -1);
     }
 
     // Writes a random word from words, & runs ReduceBoredom.
